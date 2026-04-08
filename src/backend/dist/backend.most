@@ -1,0 +1,34 @@
+// Version: 1.0.0
+type AnswerOption__344332149 = {isCorrect : Bool; letter : Text; text : Text};
+type CardId__427529015 = Text;
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type SavedCardInternal__469020814 =
+  {
+    answerOptions : [AnswerOption__344332149];
+    confidence : Nat;
+    id : CardId__427529015;
+    question : Text;
+    savedAt : Timestamp__301639476;
+    steps : [SolutionStep__780011472];
+    variationQuestion : Text
+  };
+type SolutionStep__780011472 =
+  {description : Text; formula : Text; result : Text; stepNumber : Nat};
+type Timestamp__301639476 = Int;
+actor {
+  stable cards :
+    {
+      var root :
+        Node__46230540<CardId__427529015, SavedCardInternal__469020814>;
+      var size : Nat__490723111
+    };
+  stable var nextId : Nat
+};

@@ -1,0 +1,22 @@
+{
+  "overview": "Variant is a Neumorphic question solver and variation generator for complex math and reasoning problems. Paste any question, configure answer type and difficulty, and generate multiple unique variations — each with 4 answer options, a step-by-step solution, and a confidence score.",
+  "features": [
+    "Paste any complex math or reasoning question and generate N variations",
+    "Smart distractor generation (wrong answers based on real mistake patterns)",
+    "Collapsible step-by-step solution breakdowns with confidence scoring",
+    "Warning flags for low-confidence results",
+    "Copy and save variant cards to a persistent Saved tab",
+    "Neumorphic UI with sky blue accents, raised cards, sunken inputs"
+  ],
+  "category": "productivity",
+  "tags": [
+    "question-solver",
+    "variation-generator",
+    "math",
+    "neumorphic",
+    "education",
+    "ai",
+    "reasoning"
+  ],
+  "last_updated": "2026-04-08T10:25:43.307Z"
+}

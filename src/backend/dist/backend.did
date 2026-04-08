@@ -1,0 +1,75 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type Variation = 
+ record {
+   answerOptions: vec AnswerOption;
+   confidence: nat;
+   correctAnswer: text;
+   distractors: vec text;
+   id: text;
+   question: text;
+   steps: vec SolutionStep;
+   warningFlag: bool;
+ };
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type Timestamp = int;
+type SolverResult = record {variations: vec Variation;};
+type SolutionStep = 
+ record {
+   description: text;
+   formula: text;
+   result: text;
+   stepNumber: nat;
+ };
+type SavedCard = 
+ record {
+   answerOptions: vec AnswerOption;
+   confidence: nat;
+   id: CardId;
+   question: text;
+   savedAt: Timestamp;
+   steps: vec SolutionStep;
+   variationQuestion: text;
+ };
+type CardInput = 
+ record {
+   answerOptions: vec AnswerOption;
+   confidence: nat;
+   question: text;
+   steps: vec SolutionStep;
+   variationQuestion: text;
+ };
+type CardId = text;
+type AnswerOption = 
+ record {
+   isCorrect: bool;
+   letter: text;
+   "text": text;
+ };
+service : {
+  deleteCard: (id: text) -> (bool);
+  getSavedCards: () -> (vec SavedCard) query;
+  saveCard: (card: CardInput) -> (text);
+  solveQuestion: (question: text, answerType: text, difficulty: nat,
+   variationCount: nat) -> (SolverResult);
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+}
